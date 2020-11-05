@@ -210,3 +210,40 @@ for k in ${!tripletrecord[@]}
 do
 echo "$k =" ${tripletrecord[$k]}"%"
 done
+
+max=0
+min=0
+for t in ${!tripletrecord[@]}
+do
+echo "$t =" ${tripletrecord[$t]}"%"
+if (( $max < ${tripletrecord[$t]} ))
+then
+max=${tripletrecord[$t]}
+fi
+done
+for s in ${!tripletrecord[@]}
+do
+echo "$s =" ${tripletrecord[$s]}"%"
+if (( $min > ${tripletrecord[$s]} ))
+then
+min=${tripletrecord[$s]}
+fi
+done
+
+echo "And The Winning Combination is="
+
+for k in ${!tripletrecord[@]}
+do
+if (( $max == ${tripletrecord[$k]} ))
+then
+echo "Maximun=" $k  $max "% times"
+fi
+done
+
+for p in ${!tripletrecord[@]}
+do
+if (( $min == ${tripletrecord[$p]} ))
+then
+echo "Minimum="  $p  $min "% times"
+fi
+done
